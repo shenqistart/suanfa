@@ -1,45 +1,46 @@
 const tree = {
-	val: 'a',
-	children: [
-		{
-			val: 'b',
-			children: [
-				{
-					val: 'd',
-					children: []
-				},
-				{
-					val: 'e',
-					children: []
-				}
-			]
-		},
-		{
-			val: 'c',
-			children: [
-				{
-					val: 'f',
-					children: []
-				},
-				{
-					val: 'g',
-					children: []
-				}
-			]
-		}
-	]
+  val: "a",
+  children: [
+    {
+      val: "b",
+      children: [
+        {
+          val: "d",
+          children: [],
+        },
+        {
+          val: "e",
+          children: [],
+        },
+      ],
+    },
+    {
+      val: "c",
+      children: [
+        {
+          val: "f",
+          children: [],
+        },
+        {
+          val: "g",
+          children: [],
+        },
+      ],
+    },
+  ],
 };
 
-const bfs = (root) => {
-	const q = [ root ];
-	// 在队列不为空的情况下
-	while (q.length > 0) {
-		const n = q.shift();
-		console.log(n.val);
-		n.children.forEach((child) => {
-			q.push(child);
-		});
-	}
-};
+function bfs(tree) {
+  const que = [];
+  que.push(tree);
+  while (que.length) {
+    const top = que[0];
+    console.log(top.val);
+    top.children.forEach((element) => {
+      que.push(element);
+    });
+    que.shift();
+  }
+}
 
 bfs(tree);
