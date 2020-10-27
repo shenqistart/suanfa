@@ -1,25 +1,25 @@
 let ary = [1, 2, 3];
 function allArrangement(ary) {
-  let res = [];
-  let Map = {};
-  let curr = [];
-  let len = ary.length;
-  function dfs(nth) {
-    if (nth === len) {
+  const res = [];
+  const curr = [];
+  const len = ary.length;
+  const map = {};
+  function nth(num) {
+    if (num === len) {
       res.push(curr.slice());
       return;
     }
     for (let i = 0; i < len; i++) {
-      if (!Map[ary[i]]) {
+      if (!map[ary[i]]) {
         curr.push(ary[i]);
-        Map[ary[i]] = 1;
-        dfs(nth + 1);
+        map[ary[i]] = 1;
+        nth(num + 1);
         curr.pop();
-        Map[ary[i]] = 0;
+        map[ary[i]] = 0;
       }
     }
   }
-  dfs(0);
+  nth(0);
   return res;
 }
 console.log(allArrangement(ary));
