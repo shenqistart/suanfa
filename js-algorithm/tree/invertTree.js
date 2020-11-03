@@ -1,11 +1,11 @@
 const root = require("./bt");
 
 const invertTree = (root) => {
-  if (!root) return root;
-  let right = invertTree(root.right);
+  if (!root) return;
   let left = invertTree(root.left);
-  root.right = left;
+  let right = invertTree(root.right);
   root.left = right;
+  root.right = left;
   return root;
 };
 
